@@ -1,7 +1,10 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../static/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../static/style.css"/>
         <meta charset="UTF-8">
         <title>main page</title>
     </head>
@@ -9,10 +12,10 @@
         <div>
             {% if conversation.their_next_fingerprint %}
                 <form action="{{ url_for('send_message', cid=conversation.id) }}" method='POST'>
-                    <input type="hidden" name="conversation_id" value="{{ conversation.id }}">
+                    <input class="form-control" type="hidden" name="conversation_id" value="{{ conversation.id }}">
                     Send reply:<br>
                     <textarea name=text rows=5 cols=40></textarea><br>
-                    <button type='submit'>Send message</button>
+                    <button class="btn btn-default" type='submit'>Send message</button>
                 </form>
             {% else %}
                 Missing fingerprint of other side. We can't send messages until we receive one.
@@ -29,7 +32,7 @@
             <textarea name=text rows=5 cols=40 disabled="">{{ m.content | safe }}</textarea>
             </p>
             <p>Time:
-            <input type="text" name="rcv_name" value="{{ m.datetime }}" disabled>
+            <input class="form-control" type="text" name="rcv_name" value="{{ m.datetime }}" disabled>
             </p>
             <hr>
             {% else %}
@@ -41,7 +44,7 @@
             <p>
 	    {% endif %}
             <form method='GET' action='/'>
-                <button type='submit'>Back to main page</button>
+                <button class="btn btn-default" type='submit'>Back to main page</button>
             </form>
             </p>
         </div>
